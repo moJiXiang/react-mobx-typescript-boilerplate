@@ -1,10 +1,16 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint:latest", "tslint-blueprint"],
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
       "coverage/lcov-report/*.js"
     ]
-  }
+  },
+  "rules":{
+    "object-literal-sort-keys": false,
+    "no-submodule-imports": false,
+    "no-console": false,
+    "one-variable-per-declaration": false
+  }   
 }
