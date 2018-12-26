@@ -136,3 +136,7 @@ https://github.com/jantimon/html-webpack-plugin/issues/998
 
  yarn add html-webpack-plugin@next -D
 ```
+
+12. 使用React.lazy来动态加载组件
+
+13. 使用webpack.dllPlugin把react, react-dom等第三方组件打包成vendor.dll.js，能够提高打包速度，和减少main.js的大小
