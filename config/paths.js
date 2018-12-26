@@ -55,4 +55,9 @@ module.exports = {
   appTsLint: resolveApp('tslint.json'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  vendors: [
+    "react",
+    "react-dom",
+    "react-router-dom"
+  ]
 };

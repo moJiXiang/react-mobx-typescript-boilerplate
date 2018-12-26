@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "dva/dynamic": ["src/types/dva/dynamic"]
+    },
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
@@ -17,15 +20,7 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
+  "exclude": ["node_modules", "config", "build", "scripts", "acceptance-tests", "webpack", "jest", "src/setupTests.ts"]
 }

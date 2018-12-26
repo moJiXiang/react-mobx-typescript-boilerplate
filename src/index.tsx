@@ -1,21 +1,35 @@
-import dva from "dva";
-import createLoading from "dva-loading";
-import registerServiceWorker from "./registerServiceWorker";
-import router from "./router";
+import { createBrowserHistory } from 'history';
+import { configure } from 'mobx';
+import { Provider } from 'mobx-react';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Router } from 'react-router-dom';
 
-// 1. Initialize
-const app = dva();
+import { TodoModel } from 'src/models';
+import { createStore } from 'src/stores';
 
-// 2. Plugins
-app.use(createLoading());
+import { App } from 'src/app';
 
-// 3. Registter global model
-// app.model(count);
+// enable MobX strict mode
+configure({
+  enforceActions: 'observed',
+});
 
-// 4. Router
-app.router(router);
+// default fixtures for TodoStore
+const defaultTodos = [
+  new TodoModel('Use Mobx'),
+  new TodoModel('Use React', true),
+];
 
-// 5. Start
-app.start("#root");
+// init MobX stores
+const history = createBrowserHistory();
+const rootStore = createStore(history, defaultTodos);
 
-registerServiceWorker();
+ReactDOM.render(
+  <Provider {...rootStore}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById('root'),
+);

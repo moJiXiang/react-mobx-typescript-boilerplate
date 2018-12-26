@@ -9,7 +9,7 @@
 
 ##### 项目过程中需要注意的坑
 
-1. 因为在`router.tsx`中会加载model，所有在`index.tsx`中就不用加载`app.model(count)`，否则会报错。详情请看[dva/issue:533](https://github.com/dvajs/dva/issues/533)
+1. 因为在`router.tsx`中会加载 model，所有在`index.tsx`中就不用加载`app.model(count)`，否则会报错。详情请看[dva/issue:533](https://github.com/dvajs/dva/issues/533)
 
 2. `dva/dynamic`的`d.ts`文件不对，需要改为
 
@@ -21,13 +21,13 @@ import { DvaInstance } from './index';
   models?: () => PromiseLike<any>[],
   component: () => PromiseLike<any>,
 }) => ComponentType<any>;
-export default dynamic;	
+export default dynamic;
 ```
 
 详情请看[dva/issue:1758](https://github.com/dvajs/dva/issues/1758)
 
 3. Typescript 使用 css module
-使用`typings-for-css-modules-loader`，前提是需要`npm run reject`在`config/webpack.config.dev.js`中修改, 然后使用`import * as Style form './style.scss'`
+   使用`typings-for-css-modules-loader`，前提是需要`npm run reject`在`config/webpack.config.dev.js`中修改, 然后使用`import * as Style form './style.scss'`
 
 参考[TypeScript 中使用 CSS Modules](https://juejin.im/post/59c62f8e6fb9a00a51439ad5)
 
@@ -65,7 +65,7 @@ export default dynamic;
 "experimentalDecorators": true,
 ```
 
-5. dva如何做单元测试
+5. dva 如何做单元测试
 
 参考 [dva/pulls:15](https://github.com/dvajs/dva-example-user-dashboard/pull/15)
 具体代码 [dva/pulls:15 files](https://github.com/dvajs/dva-example-user-dashboard/pull/15/files)
@@ -76,9 +76,7 @@ export default dynamic;
 [Testing a React-Redux app using Jest and Enzyme](https://medium.com/netscape/testing-a-react-redux-app-using-jest-and-enzyme-b349324803a9)
 [Home.spec.js](https://github.com/Gethyl/ReactReduxTestingUsingJestEnzyme/blob/master/__test__/Home.spec.js)
 
-
-6. Home.test.tsx中的readonly错误
-
+6. Home.test.tsx 中的 readonly 错误
 
 ```
 
@@ -100,9 +98,9 @@ describe("Home Component", () => {
 expect(wrapper.state("count")).toEqual(0)
 ```
 
-7. mock数据测试
+7. mock 数据测试
 
-[一个webpack 搭建的 mock 案例演示](https://github.com/ToNiQian/mockjs)
+[一个 webpack 搭建的 mock 案例演示](https://github.com/ToNiQian/mockjs)
 
 这里增加了一个`scripts/mock.js`，在`package.json`中增加了一个`script`, `"mock": "node scripts/mock.js"`, 在`App.tsx`中增加`(process.env.NODE_ENV === "mock") && (require("../../mock/todos"));`
 
@@ -112,4 +110,29 @@ expect(wrapper.state("count")).toEqual(0)
 yarn global add serve
 
 serve -s build -p 5001
+```
+
+9. tslint autoFixOnSave 失效
+   https://github.com/Microsoft/vscode-tslint/issues/136
+
+
+在设置里加上 {"tslint.autoFixOnSave": true}
+
+10. .editorconfig 配合 Prettier 使用
+
+https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+editor.formatOnSave: false 这个缩进和尾部加;， 都可以在eslint或者tslint中设置，开启eslint-autoFixOnSave或者tslint-autoFixOnSave即可
+
+
+11. HtmlWebpackPlugin.getHooks is not a function
+
+> TypeError: HtmlWebpackPlugin.getHooks is not a function
+
+https://github.com/jantimon/html-webpack-plugin/issues/998
+
+```
+ new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+
+ yarn add html-webpack-plugin@next -D
 ```
