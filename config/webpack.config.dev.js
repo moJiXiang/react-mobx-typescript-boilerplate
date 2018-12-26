@@ -269,6 +269,11 @@ module.exports = {
       watch: paths.appSrc,
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLint
+    }),
+    new webpack.DllReferencePlugin({
+      context: paths.appPublic,
+      manifest: path.resolve(paths.appPublic, 'dll', 'manifest.json'),
+      name: "vendor_dll",
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.

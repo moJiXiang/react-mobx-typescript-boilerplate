@@ -22,5 +22,5 @@
     "noUnusedLocals": true,
     "experimentalDecorators": true
   },
-  "exclude": ["node_modules", "config", "build", "scripts", "acceptance-tests", "webpack", "jest", "src/setupTests.ts"]
+  "exclude": ["node_modules", "config", "public", "build", "scripts", "acceptance-tests", "webpack", "jest"]
 }
